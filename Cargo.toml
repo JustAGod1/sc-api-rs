@@ -2,6 +2,13 @@
 name = "sc-api"
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+readme = "README.md"
+description = "A library to interact with the SC API"
+repository = "https://github.com/JustAGod1/sc-api-rs"
+documentation = "https://github.com/JustAGod1/sc-api-rs"
+keywords = ["sc", "api", "sc-api", "api-client"]
+categories = ["api-bindings"]
 
 [dependencies]
 reqwest = "0.11.4"
