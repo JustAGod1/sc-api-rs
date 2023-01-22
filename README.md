@@ -1,6 +1,7 @@
 # Rust implementation of the Stalcraft API.
 
 ---
+[![crates.io](https://img.shields.io/crates/v/sc-api.svg)](https://crates.io/crates/sc-api)
 
 This library provides a Rust implementation of the Stalcraft API. You can
 read more about the API at https://eapi.stalcraft.net/.
