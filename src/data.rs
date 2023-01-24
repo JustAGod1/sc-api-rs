@@ -1,9 +1,8 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use serde_json::{Map, Value};
 
 
-
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct RegionId(pub String);
 
 impl From<String> for RegionId {
@@ -24,13 +23,13 @@ impl ToString for RegionId {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Region {
     pub id: RegionId,
     pub name: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct ItemId(pub String);
 
 impl ToString for ItemId {
@@ -51,20 +50,20 @@ impl From<&str> for ItemId {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct AuctionPriceHistory {
     pub total: i64,
-    pub prices: Vec<PriceEntry>
+    pub prices: Vec<PriceEntry>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct PriceEntry {
     pub amount: i32,
     pub price: i32,
     pub time: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Lot {
     pub item_id: ItemId,
@@ -79,16 +78,16 @@ pub struct Lot {
 
     pub end_time: String,
 
-    pub additional: Map<String, Value>
+    pub additional: Map<String, Value>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct AuctionLots {
     pub total: i64,
-    pub lots: Vec<Lot>
+    pub lots: Vec<Lot>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct CharacterId(pub String);
 
 impl ToString for CharacterId {
@@ -109,7 +108,7 @@ impl From<&str> for CharacterId {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct CharacterMetaInfo {
     pub id: CharacterId,
@@ -117,7 +116,7 @@ pub struct CharacterMetaInfo {
     pub creation_time: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct ClanId(pub String);
 
 impl ToString for ClanId {
@@ -138,7 +137,7 @@ impl From<&str> for ClanId {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct ClanInfo {
     pub id: ClanId,
@@ -150,10 +149,10 @@ pub struct ClanInfo {
     pub alliance: Option<String>,
     pub description: String,
     pub leader: String,
-    pub member_count: i32
+    pub member_count: i32,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub enum Rank {
     RECRUIT,
     COMMONER,
@@ -164,7 +163,7 @@ pub enum Rank {
     LEADER,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct ClanMember {
     pub name: String,
@@ -172,29 +171,29 @@ pub struct ClanMember {
     pub join_time: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct CharacterClanInfo {
     pub info: ClanInfo,
     pub member: ClanMember,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Character {
     pub information: CharacterMetaInfo,
     pub clan: Option<CharacterClanInfo>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct ClanMembers(pub Vec<ClanMember>);
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct ClansList {
     pub total_clans: i32,
     pub data: Vec<ClanInfo>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct EmissionInformation {
     pub current_start: String,
@@ -202,7 +201,7 @@ pub struct EmissionInformation {
     pub previous_end: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct FriendsList(pub Vec<String>);
 
 pub enum Sort {
